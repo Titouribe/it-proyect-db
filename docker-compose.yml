@@ -1,0 +1,12 @@
+services:
+  db:
+    image: mysql:8.0.33
+    container_name: dlocal_it_proyect_db
+    command: --lower_case_table_names=1 --require_secure_transport=OFF --host_cache_size=0 
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345
+      TZ: America/Bogota
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql_it_proyect:/var/lib/mysql
