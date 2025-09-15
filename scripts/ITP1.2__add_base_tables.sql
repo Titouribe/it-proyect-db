@@ -129,6 +129,7 @@ CREATE TABLE
         date DATETIME NOT NULL,
         created_date DATETIME NOT NULL,
         description VARCHAR(500),
+        value INT NOT NULL DEFAULT 0,
         proyect_id INT NOT NULL,
         spend_type_id INT NOT NULL,
         CONSTRAINT fk_spend_proyect_id FOREIGN KEY (proyect_id) REFERENCES proyect (id),
