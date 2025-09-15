@@ -1,3 +1,5 @@
+-- Agregar procedimientos almacenados para las tablas necesarias para la creación de la función de busqueda de gastos totales por proyecto
+
 DELIMITER $$
 CREATE PROCEDURE sp_insert_position (
     IN name VARCHAR(150),
