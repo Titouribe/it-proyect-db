@@ -1,3 +1,5 @@
+-- Función para devolver el total de gastos por id de proyecto
+
 DELIMITER $$
 CREATE FUNCTION obtener_total_gastos_por_proyecto(p_project_id INT)
     RETURNS DECIMAL(10, 2)
