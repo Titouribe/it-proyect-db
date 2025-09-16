@@ -1,5 +1,7 @@
 -- Creación de trigger o "gatillo" que se ejecuta cuando se actualiza un trabajador para almacenar la información anterior
 
+USE itproyects;
+
 DELIMITER $$
 CREATE TRIGGER trigger_worker_update_copy
 AFTER UPDATE ON worker
@@ -113,3 +115,15 @@ BEGIN
         NOW()
     );
 END$$
+
+INSERT INTO
+    schema_version (version, version_name, created_date) VALUES(7,'ITP1.7__add_triggers_when_edit_or_delete_worker_and_programming_language.sql', NOW());
+
+-- ROLLBACK (Para eliminar la migración en caso de fallos de manera ordenada)
+-- SET SQL_SAFE_UPDATES = 0;
+-- USE itproyects;
+-- DROP TRIGGER IF EXISTS trigger_programming_language_deletion_copy;
+-- DROP TRIGGER IF EXISTS trigger_programming_language_update_copy;
+-- DROP TRIGGER IF EXISTS trigger_worker_deletion_copy;
+-- DROP TRIGGER IF EXISTS trigger_worker_update_copy;
+-- DELETE FROM schema_version where version = 7;

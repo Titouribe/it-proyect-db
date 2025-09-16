@@ -1,5 +1,7 @@
 -- Agregar procedimientos almacenados para las tablas necesarias para la creación de la función de busqueda de gastos totales por proyecto
 
+USE itproyects;
+
 DELIMITER $$
 CREATE PROCEDURE sp_insert_position (
     IN name VARCHAR(150),
@@ -146,3 +148,23 @@ CALL sp_insert_spend ('Cena con el cliente', 'Cena', NOW(), 8, 900, 3, NOW());
 CALL sp_insert_spend ('Camisa estampada', 'Camisa para el trabajo', NOW(), 9, 600, 1, NOW());
 CALL sp_insert_spend ('Viaje para revisar propuesta', 'viaje revisar propuesta', NOW(), 9, 800, 2, NOW());
 CALL sp_insert_spend ('Cena con el cliente', 'Cena', NOW(), 9, 900, 3, NOW());
+
+INSERT INTO
+    schema_version (version, version_name, created_date) VALUES(3,'ITP1.3__add_CREATE_for_sample_tables.sql', NOW());
+
+-- ROLLBACK (Para eliminar la migración en caso de fallos de manera ordenada)
+-- SET SQL_SAFE_UPDATES = 0;
+-- USE itproyects;
+-- DELETE FROM spend;
+-- DELETE FROM proyect;
+-- DELETE FROM worker;
+-- DELETE FROM customer;
+-- DELETE FROM spend_type;
+-- DELETE FROM position;
+-- DROP PROCEDURE IF EXISTS sp_insert_spend;
+-- DROP PROCEDURE IF EXISTS sp_insert_proyect;
+-- DROP PROCEDURE IF EXISTS sp_insert_worker;
+-- DROP PROCEDURE IF EXISTS sp_insert_customer;
+-- DROP PROCEDURE IF EXISTS sp_insert_spend_type;
+-- DROP PROCEDURE IF EXISTS sp_insert_position;
+-- DELETE FROM schema_version where version = 3;
