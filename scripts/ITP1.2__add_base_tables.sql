@@ -1,5 +1,7 @@
 -- Creación de las tablas base en orden de dependencias y relaciones para evitar errores
 
+USE itproyects;
+
 CREATE TABLE
     IF NOT EXISTS customer (
         id INT NOT NULL AUTO_INCREMENT,
@@ -168,6 +170,7 @@ INSERT INTO
 
 -- ROLLBACK (Para eliminar la migración en caso de fallos de manera ordenada)
 -- SET SQL_SAFE_UPDATES = 0;
+-- USE itproyects;
 -- DROP TABLE IF EXISTS worker_programming_language;
 -- DROP TABLE IF EXISTS fase_resource;
 -- DROP TABLE IF EXISTS fase_product;
